@@ -2,6 +2,7 @@ import React from "react";
 /**
  * On déclare les boutons grace a materialize
  * les liens active la modal, il faudra faire un component modal en vue de voir la fenetre apparaitre
+ * les balises <i> permettent de faire apparaitre des icons grace a "material-icons"
  */
 export const AddBtn = () => {
   return (
@@ -22,7 +23,7 @@ export const AddBtn = () => {
           </a>
         </li>
         <li>
-          <a href="#tech-modal" className="btn-floating red modal-trigger">
+          <a href="#add-tech-modal" className="btn-floating red modal-trigger">
             <i className="material-icons">person_add</i>
           </a>
         </li>
