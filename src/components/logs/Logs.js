@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { LogItem } from "./LogItem";
+import { Preloader } from "../layout/Preloader";
 
 export const Logs = () => {
   const [logs, setLogs] = useState([]); // declaration de la state, son setter et ses valeurs initiales
@@ -20,17 +22,17 @@ export const Logs = () => {
   };
 
   if (loading) {
-    return <h4>Loading...</h4>;
+    return <Preloader />;
   }
   return (
-    <ul className="collection-with-header">
+    <ul className="collection with-header">
       <li className="collection-header">
         <h4 className="center">System Logs</h4>
       </li>
       {!loading && logs.length === 0 ? (
         <p className="center">No logs to show...</p>
       ) : (
-        logs.map((log) => <li key={log.id}>{log.message}</li>) // Attention, doit avoir un key unique sinon erreur
+        logs.map((log) => <LogItem log={log} key={log.id} />) // Attention, doit avoir un key unique sinon erreur
       )}
     </ul>
   );
