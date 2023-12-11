@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux"; //permet a redux d'interargir avec les components
-import { LogItem } from "./LogItem";
+import LogItem from "./LogItem";
 import { Preloader } from "../layout/Preloader";
 import { getLogs } from "../../actions/logActions";
 
