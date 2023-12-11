@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-export const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
   //La modal contiendra des states car elle ajoutera des log
+  //Même s'il y'a Redux, ici on garde la state car elle est indépendante du Store (ce n'est pas la state du store)
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -11,7 +14,16 @@ export const AddLogModal = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech" });
     } else {
-      console.log(message, tech, attention);
+      const NewLog = {
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+
+      addLog(NewLog);
+      M.toast({ html: `Log added by ${tech}` });
+
       setMessage("");
       setAttention(false);
       setTech("");
@@ -93,3 +105,6 @@ const modalStyle = {
   width: "75%",
   height: "75%",
 };
+
+//Il n'est pas important d'importer la state ici, juste d'avoir le dispatch de addLog
+export default connect(null, { addLog })(AddLogModal);
