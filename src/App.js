@@ -1,5 +1,5 @@
 import "./App.css";
-import { SearchBar } from "./components/layout/SearchBar";
+import SearchBar from "./components/layout/SearchBar";
 import Logs from "./components/logs/Logs"; //Ici c'est un export default, du coup pas de {}, difference ?
 import { AddBtn } from "./components/layout/AddBtn";
 import AddLogModal from "./components/logs/AddLogModal";
