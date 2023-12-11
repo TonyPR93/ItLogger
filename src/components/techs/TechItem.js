@@ -1,14 +1,23 @@
 import React from "react";
+import { connect } from "react-redux";
+import { deleteTech } from "../../actions/techActions";
+import M from "materialize-css/dist/js/materialize.min.js";
 
-export const TechItem = ({ tech }) => {
+const TechItem = ({ tech: { firstName, lastName, id }, deleteTech }) => {
+  const onDelete = () => {
+    deleteTech(id);
+    M.toast({ html: "Tech deleted" });
+  };
   return (
     <li className="collection-item">
       <div>
-        {tech.firstName} {tech.lastName}
-        <a href="#!" className="secondary-content">
+        {firstName} {lastName}
+        <a href="#!" className="secondary-content" onClick={onDelete}>
           <i className="material-icons grey-text">delete</i>
         </a>
       </div>
     </li>
   );
 };
+
+export default connect(null, { deleteTech })(TechItem);
